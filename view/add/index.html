@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <title>Add Teacher</title>
+
+    <link rel="stylesheet" href="/add/style.css" />
+    
+    <script src="/add/availability.js"></script>
+    <script src="/add/courses.js"></script>
+    <script src="/add/script.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1>Add New Teacher</h1>
+      <form name="teacher">
+        <article>
+          <fieldset>
+            <legend>
+              <input type="text" name="salutation" placeholder="Salutation" />
+              <input
+                type="text"
+                name="fullName"
+                placeholder="Full Name of Teacher"
+                autofocus
+              />
+            </legend>
+            <section class="subjects">
+              <select>
+                <option disabled="disabled" selected="selected">
+                  Select a subject to assign it to the teacher
+                </option>
+                <optgroup label="First">
+                  <option value="CSC511">Discrete Structure</option>
+                  <option value="CSC512">Advanced Data Structure</option>
+                  <option value="CSC513">Operating System</option>
+                  <option value="CSC514">Algorithmic Mathematics</option>
+                  <option value="CSC515">Advanced Database Design</option>
+                </optgroup>
+                <optgroup label="Second">
+                  <option value="CSC521">Advanced Computer Architecture</option>
+                  <option value="CSC522">Automata Theory</option>
+                  <option value="CSC523">
+                    Design and Analysis of Algorithm
+                  </option>
+                  <option value="CSC524">Optimization Techniques</option>
+                  <option value="CSC525">Internet Programming</option>
+                  <option value="CSC526">Embedded System</option>
+                  <option value="CSC527">Multimedia Technology</option>
+                  <option value="CSC528">Distributed Computing</option>
+                  <option value="CSC529">Artificial Intelligence</option>
+                </optgroup>
+                <optgroup label="Third">
+                  <option value="CSC631">Compiler Construction</option>
+                  <option value="CSC632">Software Engineering</option>
+                  <option value="CSC633">Computational Geometry</option>
+                  <option value="CSC634">
+                    Object Oriented Analysis and Design
+                  </option>
+                  <option value="CSC635">Systems Programming</option>
+                  <option value="CSC636">
+                    Cryptography and Internet Security
+                  </option>
+                  <option value="CSC637">Neural Network</option>
+                </optgroup>
+                <optgroup label="Fourth">
+                  <option value="CSC641">
+                    Principles of Programming Languages
+                  </option>
+                  <option value="CSC642">Graphics and Image Processing</option>
+                  <option value="CSC643">
+                    Introduction to Randomize Algorithm
+                  </option>
+                  <option value="CSC644">
+                    Evolutionary Computing and Genetic Algorithms
+                  </option>
+                  <option value="CSC645">
+                    Data Communication and Networking
+                  </option>
+                  <option value="CSC646">Scheduling Algorithms</option>
+                  <option value="CSC647">Data Mining and Ware Housing</option>
+                </optgroup>
+              </select>
+              <output style="display: none">
+                <!-- generated using JS -->
+              </output>
+            </section>
+            <section class="availability">
+              <!-- rendered using JS -->
+            </section>
+          </fieldset>
+        </article>
+        <input type="submit" value="Submit" />
+      </form>
+    </main>
+  </body>
+</html>
