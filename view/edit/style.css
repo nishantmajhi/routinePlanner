@@ -19,38 +19,119 @@ h1 {
   color: #2d2449;
 }
 
-form {
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
 article {
-  padding: 2rem 2.5rem;
   border-radius: 0.25rem;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  display: flex;
+  overflow: hidden;
+  width: 80dvw;
+  min-height: 75dvh;
 }
 
-details {
+aside {
+  border-right: 1px solid #e5e2f0;
   display: flex;
   flex-direction: column;
-  width: 70dvw;
+  width: 210px;
 }
 
-summary {
-  font-size: 1.25rem;
+aside > header {
+  border-bottom: 1px solid #e5e2f0;
+  padding: 0.75rem 1.75rem 0.25rem 1.75rem;
+  font-size: 0.9rem;
   font-weight: bold;
-}
-summary::marker {
-  margin-left: 1rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
 }
 
-details > section {
-  margin: 2rem 1rem 1rem 1rem;
+aside > nav {
+  overflow-y: auto;
+  flex: 1;
+  padding: 0.375rem 0;
   display: flex;
   flex-direction: column;
+}
+
+aside > nav > button {
+  margin-block: 0;
+  border: none;
+  border-left: 3px solid transparent;
+  border-radius: 0;
+  padding: 0.625rem 1.75rem;
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.12s;
+}
+
+aside > nav > button:hover {
+  background-color: ghostwhite;
+}
+
+aside > nav > button[aria-current] {
+  border-left-color: hsl(250, 75%, 60%);
+  background-color: ghostwhite;
+}
+
+aside > nav > button > small {
+  font-size: 0.7rem;
+  color: #999;
+}
+
+aside > nav > button > b {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #2d2449;
+}
+
+aside > nav > button[aria-current] > b {
+  color: hsl(250, 75%, 40%);
+}
+
+article > section {
+  padding: 2rem 2.5rem;
+  flex: 1;
+  overflow-y: auto;
+  background-color: ghostwhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+article > section > form {
+  width: 100%;
+}
+
+article > section > form > h2 {
+  margin: 0 0 2rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d2449;
+}
+
+form > section {
+  margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+form > section > fieldset {
+  border: 1px solid darkgrey;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+form > section > fieldset > legend {
+  font-weight: bold;
 }
 
 select {
@@ -105,6 +186,7 @@ output {
   display: inline-block;
   margin: 0;
   font-size: 0.96rem;
+  font-weight: normal;
   width: 10ch;
 }
 

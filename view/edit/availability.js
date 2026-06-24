@@ -11,7 +11,13 @@ function renderAvailability(teacher) {
 
   teacher.availability_json = teacher.availability_json || {};
 
-  const wrapper = createElement("section", { class: "availability" }, []);
+  const fieldset = createElement("fieldset", {}, [
+    createElement("legend", {}, "Availability"),
+  ]);
+
+  const wrapper = createElement("section", { class: "availability" }, [
+    fieldset,
+  ]);
 
   days.forEach((day) => {
     const dayLabel = createElement("label");
@@ -70,7 +76,7 @@ function renderAvailability(teacher) {
 
     dayLabel.appendChild(slotsContainer);
     dayLabel.appendChild(addSlotButton);
-    wrapper.appendChild(dayLabel);
+    fieldset.appendChild(dayLabel);
   });
 
   return wrapper;

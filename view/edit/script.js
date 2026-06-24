@@ -26,41 +26,53 @@ document.addEventListener("DOMContentLoaded", () => {
         ),
       }));
 
-      renderTeachersForm(teachers, courses);
+      renderTeacherList(teachers);
     })
     .catch((error) => {
       console.error(error);
     });
 });
 
-function renderTeachersForm(teachers, courses) {
-  const form = document.forms["preferences"];
-  form.innerHTML = "";
+function renderTeacherList(teachers) {
+  const nav = document.querySelector("aside > nav");
+  nav.innerHTML = "";
 
   teachers.forEach((teacher, index) => {
-    teacher.subjects_array = teacher.subjects_array || [];
-
-    const detailsAttrs = {
-      name: "teacher",
-      ...(index === 0 && { open: true }),
-    };
-
-    const teacherArticle = createElement("article", {}, [
-      createElement("details", detailsAttrs, [
-        createElement(
-          "summary",
-          {},
-          `${teacher.salutation} ${teacher.fullName}`
-        ),
-
-        // inside collapsible details
-        renderSubjects(teacher, courses),
-        renderAvailability(teacher),
-      ]),
+    const item = createElement("button", { type: "button" }, [
+      createElement("small", {}, teacher.salutation),
+      createElement("b", {}, teacher.fullName),
     ]);
 
-    form.appendChild(teacherArticle);
+    item.addEventListener("click", () => {
+      document
+        .querySelectorAll("aside > nav > button")
+        .forEach((el) => el.removeAttribute("aria-current"));
+      item.setAttribute("aria-current", "true");
+      renderTeacherDetail(teacher);
+    });
+
+    nav.appendChild(item);
+
+    if (index === 0) {
+      item.setAttribute("aria-current", "true");
+      renderTeacherDetail(teacher);
+    }
   });
+}
+
+function renderTeacherDetail(teacher) {
+  const section = document.querySelector("article > section");
+  section.innerHTML = "";
+
+  teacher.subjects_array = teacher.subjects_array || [];
+
+  const form = createElement("form", { name: "preferences" }, [
+    createElement("h2", {}, `${teacher.salutation} ${teacher.fullName}`),
+    renderSubjects(teacher, courses),
+    renderAvailability(teacher),
+  ]);
+
+  section.appendChild(form);
 }
 
 // Example data from backend:
@@ -83,46 +95,8 @@ function renderTeachersForm(teachers, courses) {
 //   {
 //     semester: 1,
 //     subjects: [
-//       {
-//         code: "CSC538",
-//         name: "Advanced Operating Systems",
-//         type: "compulsory",
-//       },
-//       {
-//         code: "CSC539",
-//         name: "Object Oriented Software Engineering",
-//         type: "compulsory",
-//       },
-//       {
-//         code: "CSC540",
-//         name: "Algorithms and Complexity",
-//         type: "compulsory",
-//       },
-//       {
-//         code: "CSC542",
-//         name: "Seminar I",
-//         type: "compulsory",
-//       },
-//       {
-//         code: "CSC543",
-//         name: "Neural Network",
-//         type: "compulsory",
-//       },
-//       {
-//         code: "CSC544",
-//         name: "Parallel and Distributed Computing",
-//         type: "compulsory",
-//       },
-//       {
-//         code: "CSC545",
-//         name: "Algorithmic Mathematics",
-//         type: "elective",
-//       },
-//       {
-//         code: "CSC546",
-//         name: "Advance Computer Architecture",
-//         type: "elective",
-//       },
+//       { code: "CSC538", name: "Advanced Operating Systems", type: "compulsory" },
+//       ...
 //     ],
 //   },
 //  ...

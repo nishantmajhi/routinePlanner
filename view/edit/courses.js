@@ -28,7 +28,13 @@ function renderSubjects(teacher, courses) {
     select.selectedIndex = 0;
   });
 
-  return createElement("section", { class: "subjects" }, [select, output]);
+  return createElement("section", { class: "subjects" }, [
+    createElement("fieldset", {}, [
+      createElement("legend", {}, "Subjects"),
+      select,
+      output,
+    ]),
+  ]);
 }
 
 function addSubjectCard(teacher, code, name, output, select, courses) {
@@ -97,7 +103,7 @@ function rebuildSubjectCards(output, teacher, courses, select) {
       return {
         code,
         name: subject.name,
-        semester: semester || 99, // fallback for unknown
+        semester: semester || 99,
       };
     })
     .filter(Boolean);
